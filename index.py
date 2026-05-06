@@ -31,10 +31,10 @@ def cadastrar():
     telefone = entry_telefone.get()
     email = entry_email.get()
     convenio_sus = entry_convenio_sus.get()
-    contrato = entry_contrato_emergencia.get()    
+    contato = entry_contato_emergencia.get()    
     
-    if nome == '' or cpf == '' or data_nascimento == '' or telefone == '' or email == '' or convenio_sus == '' or contrato == '':
-        messagebox.showerror('Erro', 'Por favor, preencha todos os campos!')
+    if nome == '' or cpf == '' or data_nascimento == '' or telefone == '' or email == '' or convenio_sus == '' or contato == '':
+        messagebox.showerror('Erro', 'Por favor, preencha todos os campos!!!')
     else:    
         tabela.insert('', 'end', values=(nome, cpf, data_nascimento, telefone, email, convenio_sus, contrato))
         entry_Nome_Completo.delete(0, END)
@@ -46,6 +46,14 @@ def cadastrar():
         entry_contrato_emergencia.delete(0, END)    
         
         messagebox.showinfo('Sucesso', 'Paciente cadastrado com sucesso!')
+        
+        
+def eliminar():
+    item_selecionado = tabela.selection()
+    if item_selecionado:
+        tabela.delete(item_selecionado)
+    else:
+        messagebox.showwarning("Aviso", "Selecione um paciente para eliminar.")
         
         # aba de cadastro
         
@@ -74,9 +82,9 @@ Label(aba1, text='Convênio/SUS:').pack(pady=5)
 entry_convenio_sus = Entry(aba1, width=40)  
 entry_convenio_sus.pack()
         
-Label(aba1, text='Contrato de Emergência:').pack(pady=5)
-entry_contrato_emergencia = Entry(aba1, width=40)
-entry_contrato_emergencia.pack()
+Label(aba1, text='Contato de Emergência:').pack(pady=5)
+entry_contato_emergencia = Entry(aba1, width=40)
+entry_contato_emergencia.pack()
         
 Button(
             aba1,
@@ -86,10 +94,12 @@ Button(
             width=20,
             command=cadastrar
         ).pack(pady=20)
+
+Button(aba2, text="Eliminar Selecionado", bg="#4c67ee", fg="white", command=eliminar).pack(pady=10)
         
         # aba de tabela
 
-colunas = ('Nome Completo', 'CPF', 'Data de Nascimento', 'Telefone', 'Email', 'Convênio/SUS', 'Contrato de Emergência')     
+colunas = ('Nome Completo', 'CPF', 'Data de Nascimento', 'Telefone', 'Email', 'Convênio/SUS', 'Contato de Emergência')     
         
 tabela = ttk.Treeview(
             aba2,
