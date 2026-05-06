@@ -36,14 +36,14 @@ def cadastrar():
     if nome == '' or cpf == '' or data_nascimento == '' or telefone == '' or email == '' or convenio_sus == '' or contato == '':
         messagebox.showerror('Erro', 'Por favor, preencha todos os campos!!!')
     else:    
-        tabela.insert('', 'end', values=(nome, cpf, data_nascimento, telefone, email, convenio_sus, contrato))
+        tabela.insert('', 'end', values=(nome, cpf, data_nascimento, telefone, email, convenio_sus, contato))
         entry_Nome_Completo.delete(0, END)
         entry_Cpf.delete(0, END)
         entry_Data_Nascimento.delete(0, END)
         entry_telefone.delete(0, END)
         entry_email.delete(0, END)
         entry_convenio_sus.delete(0, END)
-        entry_contrato_emergencia.delete(0, END)    
+        entry_contato_emergencia.delete(0, END)    
         
         messagebox.showinfo('Sucesso', 'Paciente cadastrado com sucesso!')
         
